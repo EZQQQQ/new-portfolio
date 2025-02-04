@@ -10,8 +10,8 @@ export const navLinks = [
     pathname: '/#details',
   },
   {
-    label: 'Articles',
-    pathname: '/articles',
+    label: 'Experiences',
+    pathname: '/#experiences',
   },
   {
     label: 'Contact',
@@ -21,18 +21,13 @@ export const navLinks = [
 
 export const socialLinks = [
   {
-    label: 'Bluesky',
-    url: `https://bsky.app/profile/${config.bluesky}`,
-    icon: 'bluesky',
-  },
-  {
-    label: 'Figma',
-    url: `https://www.figma.com/${config.figma}`,
-    icon: 'figma',
+    label: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/ezekiel-loh-a10184217/',
+    icon: 'linkedin'
   },
   {
     label: 'Github',
     url: `https://github.com/${config.github}`,
-    icon: 'github',
-  },
+    icon: 'github'
+  }
 ];

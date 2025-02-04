@@ -1,11 +1,9 @@
 {
-  "name": "Hamish Williams",
-  "role": "Designer",
-  "disciplines": ["Developer", "Prototyper", "Animator", "Illustrator", "Modder"],
-  "url": "https://hamishw.com",
-  "bluesky": "hamishw.com",
-  "figma": "@Hamish",
-  "github": "HamishMW",
-  "repo": "https://github.com/HamishMW/portfolio",
-  "ascii": "__  __  __\n\u005C \u005C \u005C \u005C \u005C\u2215\n \u005C \u005C\u2215\u005C \u005C\n  \u005C\u2215  \u005C\u2215\n"
+  "name": "Ezekiel Loh",
+  "role": "Software Developer",
+  "disciplines": ["Frontend", "Backend", "Full Stack", "DevOps"],
+  "url": "https://ezekielloh.pages.dev",
+  "linkedin": "ezekiel-loh",
+  "github": "EZQQQQ",
+  "repo": "https://github.com/EZQQQQ/portfolio"
 }
