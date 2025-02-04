@@ -1,0 +1,221 @@
+/* Overall section styling */
+.experiencesSection {
+  padding: 4rem 2rem;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Section title matches the overall content width */
+.sectionTitle {
+  text-align: center;
+  margin-bottom: var(--spaceL);
+  font-size: 2rem;
+  font-weight: bold;
+  width: 100%;
+  max-width: var(--maxWidthL);
+}
+
+/* Timeline container: full width, relative positioning */
+.timeline {
+  position: relative;
+  width: 100%;
+  max-width: var(--maxWidthL);
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Central vertical timeline line */
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--primary);
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+/* Hide timeline line, dots, and connectors on mobile */
+@media (max-width: 768px) {
+  .timelineLine,
+  .dot,
+  .connector,
+  .connectorLeft,
+  .connectorRight {
+    display: none;
+  }
+}
+
+/* Each timeline item occupies full width and provides vertical spacing */
+.timelineItem {
+  position: relative;
+  width: 100%;
+  margin: 3rem 0;
+  min-height: 100px;
+}
+
+/* Experience block styling */
+.experienceBlock {
+  position: absolute;
+  width: 45%;
+  max-width: 450px;
+  padding: var(--spaceM);
+  background-color: var(--card-bg);
+  border: 1px solid var(--primary);
+  border-radius: var(--borderRadius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: opacity 2s ease, transform 2s ease;
+  opacity: 0; /* Hidden by default */
+  z-index: 1;
+}
+
+/* When visible, fade in */
+.experienceBlock[data-visible='true'] {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Left-aligned block: positioned to the left of center */
+.left {
+  left: 0;
+}
+
+/* Right-aligned block: positioned to the right of center */
+.right {
+  right: 0;
+}
+
+/* Common connector styles */
+.connector {
+  position: absolute;
+  top: 50%;
+  border-bottom: 1px dotted var(--primary);
+  transform: translateY(-50%);
+  z-index: 1;
+  display: block; /* ensure the connector renders */
+}
+
+/* For left-aligned items:
+   - The left experience block sits at left: 0 with width: 45%, so its right edge is at 45%.
+   - The timeline dot’s center is at 50% minus 6px.
+   Therefore, set the connector’s left edge to 45% and its right edge to calc(50% - 6px). */
+.connectorLeft {
+  left: 45%;
+  right: calc(50% - 6px);
+}
+
+/* For right-aligned items:
+   - The right experience block sits at right: 0 with width: 45%, so its left edge is at 55% (100% - 45%).
+   - The timeline dot’s center is at 50% plus 6px.
+   Therefore, set the connector’s right edge to 45% and its left edge to calc(50% + 6px). */
+.connectorRight {
+  right: 45%;
+  left: calc(50% + 6px);
+}
+
+/* Dot element: centered on the timeline */
+.dot {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 12px;
+  height: 12px;
+  background-color: var(--primary);
+  border: 2px solid var(--background);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+/* Content inside each block */
+.experienceContent {
+  width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Header: logo and text styling */
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--spaceS);
+  margin-bottom: var(--spaceS);
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.headerText {
+  flex: 1;
+}
+
+.company {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--textTitle);
+}
+
+.role {
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+  color: var(--secondary-text);
+}
+
+.period {
+  font-size: 0.875rem;
+  color: var(--tertiary-text);
+}
+
+/* Bullet list styling */
+.bullets {
+  list-style-type: disc;
+  margin: 0.5rem 0 0 1.5rem;
+  padding: 0;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  /* Reflow the experience block to be relative and full-width */
+  .experienceBlock {
+    position: relative;
+    left: auto;
+    right: auto;
+    transform: none;
+    width: 90%;
+    max-width: none;
+    margin: 1rem auto;
+    padding: var(--spaceS);
+  }
+
+  /* Adjust font sizes if needed */
+  .company {
+    font-size: 1rem;
+  }
+  .role {
+    font-size: 0.875rem;
+  }
+  .period {
+    font-size: 0.75rem;
+  }
+
+  /* Ensure header text wraps properly */
+  .headerText {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+}

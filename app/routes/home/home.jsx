@@ -1,5 +1,4 @@
 // app/routes/home/home.jsx
-
 import React, { useEffect, useRef, useState } from 'react';
 import knowledgeNodeTextureLarge from '~/assets/knowledgenode-large.jpg';
 import knowledgeNodeTexturePlaceholder from '~/assets/knowledgenode-placeholder.jpg';
@@ -9,6 +8,7 @@ import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
 import { Profile } from './profile';
 import { ProjectSummary } from './project-summary';
+import { Experiences } from './experiences';
 import config from '~/config.json';
 import styles from './home.module.css';
 
@@ -38,15 +38,17 @@ export const meta = () => {
 };
 
 export const Home = () => {
-  // Use null as the initial value for refs
+  // Create refs for each section
   const intro = useRef(null);
   const projectOne = useRef(null);
   const details = useRef(null);
+  const experiencesRef = useRef(null);
   const [visibleSections, setVisibleSections] = useState([]);
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
 
   useEffect(() => {
-    const sections = [intro, projectOne, details];
+    // Include experiencesRef in the observed sections
+    const sections = [intro, projectOne, details, experiencesRef];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -72,7 +74,9 @@ export const Home = () => {
         sectionObserver.observe(ref.current);
       }
     });
-    if (intro.current) indicatorObserver.observe(intro.current);
+    if (intro.current) {
+      indicatorObserver.observe(intro.current);
+    }
 
     return () => {
       sectionObserver.disconnect();
@@ -111,6 +115,10 @@ export const Home = () => {
         sectionRef={details}
         visible={visibleSections.includes(details.current)}
         id="details"
+      />
+      <Experiences
+        sectionRef={experiencesRef}
+        visible={visibleSections.includes(experiencesRef.current)}
       />
       <Footer />
     </div>
