@@ -1,0 +1,62 @@
+.technologiesSection {
+  padding: 4rem 2rem;
+  background-color: var(--background-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: bold;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.iconWrapper {
+  position: relative;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  /* Icon will fade in and slide up */
+  animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.iconWrapper img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+/* Hide the tech name by default and show on hover */
+.iconName {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 0.8rem;
+  color: var(--text);
+  margin-top: 0.5rem;
+}
+
+.iconWrapper:hover .iconName {
+  opacity: 1;
+}

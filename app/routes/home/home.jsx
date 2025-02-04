@@ -8,6 +8,7 @@ import { baseMeta } from '~/utils/meta';
 import { Intro } from './intro';
 import { Profile } from './profile';
 import { ProjectSummary } from './project-summary';
+import { Technologies } from './technologies';
 import { Experiences } from './experiences';
 import config from '~/config.json';
 import styles from './home.module.css';
@@ -42,13 +43,14 @@ export const Home = () => {
   const intro = useRef(null);
   const projectOne = useRef(null);
   const details = useRef(null);
+  const technologies = useRef(null);
   const experiencesRef = useRef(null);
   const [visibleSections, setVisibleSections] = useState([]);
   const [scrollIndicatorHidden, setScrollIndicatorHidden] = useState(false);
 
   useEffect(() => {
     // Include experiencesRef in the observed sections
-    const sections = [intro, projectOne, details, experiencesRef];
+    const sections = [intro, projectOne, details, technologies, experiencesRef];
 
     const sectionObserver = new IntersectionObserver(
       (entries, observer) => {
@@ -115,6 +117,10 @@ export const Home = () => {
         sectionRef={details}
         visible={visibleSections.includes(details.current)}
         id="details"
+      />
+      <Technologies
+        sectionRef={technologies}
+        visible={visibleSections.includes(technologies.current)}
       />
       <Experiences
         sectionRef={experiencesRef}
