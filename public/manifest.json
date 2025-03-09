@@ -3,7 +3,7 @@
   "name": "Portfolio of Ezekiel Loh",
   "icons": [
     {
-      "src": "shortcut.png",
+      "src": "shortcut.png?v=3",
       "sizes": "64x64",
       "type": "image/png"
     },
