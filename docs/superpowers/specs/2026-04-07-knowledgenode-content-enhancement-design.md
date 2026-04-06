@@ -52,6 +52,7 @@ The KnowledgeNode project page currently has 5 content sections displaying stati
 | 4 | `knowledgenode-onboarding.jpg` | Professor onboarding features walkthrough |
 
 **Source screenshots:**
+- Slides 1–2 reuse existing assets already in `app/assets/` (`knowledgenode-assessment-professor.jpg/large.jpg/placeholder.jpg` and `knowledgenode-assessment-student.jpg/large.jpg/placeholder.jpg`). No new files needed for these two slides.
 - Slide 3: `Screenshot 2025-03-17 at 4.02.36 AM.png`
 - Slide 4: `Screenshot 2025-03-16 at 4.34.43 AM.png`
 
@@ -74,6 +75,7 @@ The KnowledgeNode project page currently has 5 content sections displaying stati
 | 5 | `knowledgenode-bookmarks.jpg` | Bookmarked questions with embedded PDF viewer |
 
 **Source screenshots:**
+- Slide 1 reuses the existing `knowledgenode-questions.jpg` and `knowledgenode-questions-placeholder.jpg` already in `app/assets/`. However, there is no `knowledgenode-questions-large.jpg` on disk. Produce it by running: `sips -Z 1880 "app/assets/knowledgenode-questions.jpg" --out "app/assets/knowledgenode-questions-large.jpg"`. Then use `srcSet: \`${knowledgeNodeQuestions} 940w, ${knowledgeNodeQuestionsLarge} 1880w\`` for slide 1.
 - Slide 2: `Screenshot 2025-03-16 at 4.43.19 AM.png`
 - Slide 3: `Screenshot 2025-03-16 at 6.31.42 PM.png`
 - Slide 4: `Screenshot 2025-03-16 at 7.33.41 PM.png`
@@ -124,7 +126,7 @@ The KnowledgeNode project page currently has 5 content sections displaying stati
 
 **Video asset:** `Timeline 1.mov` → converted to `knowledgenode-demo.mp4` via ffmpeg, placed in `app/assets/`
 
-**`<ProjectImage>` props:** `noPauseButton={false}` (show play/pause), `reveal`, `delay={300}`
+**`<ProjectImage>` props:** `reveal`, `delay={300}`. The play/pause button is shown by default for `.mp4` assets — no extra prop needed.
 
 ---
 
@@ -147,11 +149,15 @@ sips -Z 1000 input.png --out output.jpg
 # Placeholder: tiny blur
 sips -Z 20 input.png --out placeholder.jpg
 
-# Video: .mov → .mp4
-ffmpeg -i "Timeline 1.mov" -vcodec h264 -acodec aac -crf 23 knowledgenode-demo.mp4
+# Video: .mov → .mp4 (with faststart for web autoplay)
+ffmpeg -i "Timeline 1.mov" -vcodec h264 -acodec aac -crf 23 -movflags +faststart knowledgenode-demo.mp4
+
+# Video placeholder: extract first frame, then shrink to tiny blur
+ffmpeg -i "Timeline 1.mov" -ss 00:00:01 -frames:v 1 /tmp/demo-frame.png
+sips -Z 20 /tmp/demo-frame.png --out knowledgenode-demo-placeholder.jpg
 ```
 
-**Assets to produce (14 screenshot sets + 1 video):**
+**Assets to produce (10 screenshot sets + 1 video + 1 video placeholder):**
 
 | Asset name | Source screenshot |
 |------------|-------------------|
@@ -165,7 +171,9 @@ ffmpeg -i "Timeline 1.mov" -vcodec h264 -acodec aac -crf 23 knowledgenode-demo.m
 | `knowledgenode-chat-filter` | `Screenshot 2025-03-17 at 5.14.55 AM.png` |
 | `knowledgenode-reported-content` | `Screenshot 2025-03-16 at 7.19.05 PM.png` |
 | `knowledgenode-notifications` | `Screenshot 2025-03-17 at 5.08.01 AM.png` |
+| `knowledgenode-questions-large` | `app/assets/knowledgenode-questions.jpg` (resize to 1880px) |
 | `knowledgenode-demo.mp4` | `Timeline 1.mov` |
+| `knowledgenode-demo-placeholder.jpg` | First frame of `Timeline 1.mov` (see ffmpeg command above) |
 
 ---
 
