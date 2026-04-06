@@ -32,6 +32,7 @@ export const Carousel = ({ width, height, images, placeholder, ...rest }) => {
   const [dragging, setDragging] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
   const [loaded, setLoaded] = useState(false);
+  const [webglFailed, setWebglFailed] = useState(false);
   const [showPlaceholder, setShowPlaceholder] = useState(true);
   const [textures, setTextures] = useState();
   const [canvasRect, setCanvasRect] = useState();
@@ -66,23 +67,32 @@ export const Carousel = ({ width, height, images, placeholder, ...rest }) => {
   }, [dragging]);
 
   useEffect(() => {
-    const cameraOptions = [width / -2, width / 2, height / 2, height / -2, 1, 1000];
-    renderer.current = new WebGLRenderer({
-      canvas: canvas.current,
-      antialias: false,
-      alpha: true,
-      powerPreference: 'high-performance',
-      failIfMajorPerformanceCaveat: true,
-    });
-    camera.current = new OrthographicCamera(...cameraOptions);
-    scene.current = new Scene();
-    renderer.current.setPixelRatio(2);
-    renderer.current.setClearColor(0x111111, 1.0);
-    renderer.current.setSize(width, height);
-    renderer.current.domElement.style.width = '100%';
-    renderer.current.domElement.style.height = 'auto';
-    scene.current.background = new Color(0x111111);
-    camera.current.position.z = 1;
+    try {
+      const testCanvas = document.createElement('canvas');
+      if (!testCanvas.getContext('webgl2') && !testCanvas.getContext('webgl')) {
+        setWebglFailed(true);
+        return;
+      }
+      const cameraOptions = [width / -2, width / 2, height / 2, height / -2, 1, 1000];
+      renderer.current = new WebGLRenderer({
+        canvas: canvas.current,
+        antialias: false,
+        alpha: true,
+        powerPreference: 'high-performance',
+      });
+      camera.current = new OrthographicCamera(...cameraOptions);
+      scene.current = new Scene();
+      renderer.current.setPixelRatio(2);
+      renderer.current.setClearColor(0x111111, 1.0);
+      renderer.current.setSize(width, height);
+      renderer.current.domElement.style.width = '100%';
+      renderer.current.domElement.style.height = 'auto';
+      scene.current.background = new Color(0x111111);
+      camera.current.position.z = 1;
+    } catch {
+      setWebglFailed(true);
+      return;
+    }
 
     return () => {
       animating.current = false;
@@ -141,14 +151,14 @@ export const Carousel = ({ width, height, images, placeholder, ...rest }) => {
       });
     };
 
-    if (inViewport && !loaded) {
+    if (inViewport && !loaded && !webglFailed) {
       loadImages();
     }
 
     return () => {
       mounted = false;
     };
-  }, [height, images, inViewport, loaded, reduceMotion, width]);
+  }, [height, images, inViewport, loaded, reduceMotion, webglFailed, width]);
 
   const goToIndex = useCallback(
     ({ index, direction = 1 }) => {
@@ -225,11 +235,13 @@ export const Carousel = ({ width, height, images, placeholder, ...rest }) => {
   }, []);
 
   useEffect(() => {
+    if (webglFailed) return;
+
     let animation;
 
     const animate = () => {
       animation = requestAnimationFrame(animate);
-      if (animating.current) {
+      if (animating.current && renderer.current) {
         renderer.current.render(scene.current, camera.current);
       }
     };
@@ -347,6 +359,8 @@ export const Carousel = ({ width, height, images, placeholder, ...rest }) => {
         break;
     }
   };
+
+  if (webglFailed) return null;
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions

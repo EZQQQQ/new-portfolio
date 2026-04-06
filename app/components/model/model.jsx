@@ -8,6 +8,15 @@ import {
   useRef,
   useState,
 } from 'react';
+
+function isWebGLAvailable() {
+  try {
+    const canvas = document.createElement('canvas');
+    return !!(canvas.getContext('webgl2') || canvas.getContext('webgl'));
+  } catch {
+    return false;
+  }
+}
 import {
   AmbientLight,
   Color,
@@ -66,6 +75,7 @@ export const Model = ({
   ...rest
 }) => {
   const [loaded, setLoaded] = useState(false);
+  const [webglFailed, setWebglFailed] = useState(false);
   const container = useRef();
   const canvas = useRef();
   const camera = useRef();
@@ -89,15 +99,24 @@ export const Model = ({
   const rotationY = useSpring(0, rotationSpringConfig);
 
   useEffect(() => {
+    if (!isWebGLAvailable()) {
+      setWebglFailed(true);
+      return;
+    }
+
     const { clientWidth, clientHeight } = container.current;
 
-    renderer.current = new WebGLRenderer({
-      canvas: canvas.current,
-      alpha: true,
-      antialias: false,
-      powerPreference: 'high-performance',
-      failIfMajorPerformanceCaveat: true,
-    });
+    try {
+      renderer.current = new WebGLRenderer({
+        canvas: canvas.current,
+        alpha: true,
+        antialias: false,
+        powerPreference: 'high-performance',
+      });
+    } catch {
+      setWebglFailed(true);
+      return;
+    }
 
     renderer.current.setPixelRatio(2);
     renderer.current.setSize(clientWidth, clientHeight);
@@ -223,6 +242,7 @@ export const Model = ({
   }, []);
 
   const blurShadow = useCallback(amount => {
+    if (!renderer.current) return;
     blurPlane.current.visible = true;
 
     // Blur horizontally and draw in the renderTargetBlur
@@ -246,6 +266,7 @@ export const Model = ({
 
   // Handle render passes for a single frame
   const renderFrame = useCallback(() => {
+    if (!renderer.current) return;
     const blurAmount = 5;
 
     // Remove the background
@@ -304,6 +325,8 @@ export const Model = ({
 
   // Handle window resize
   useEffect(() => {
+    if (!renderer.current) return;
+
     const handleResize = () => {
       if (!container.current) return;
 
@@ -323,6 +346,8 @@ export const Model = ({
       window.removeEventListener('resize', handleResize);
     };
   }, [renderFrame]);
+
+  if (webglFailed) return null;
 
   return (
     <div
