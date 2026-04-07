@@ -60,6 +60,20 @@ import knowledgeNodeOnboarding from '~/assets/knowledgenode-onboarding.jpg';
 import knowledgeNodeOnboardingLarge from '~/assets/knowledgenode-onboarding-large.jpg';
 import knowledgeNodeOnboardingPlaceholder from '~/assets/knowledgenode-onboarding-placeholder.jpg';
 
+// Chat section images
+import knowledgeNodeChatLive from '~/assets/knowledgenode-chat-live.jpg';
+import knowledgeNodeChatLiveLarge from '~/assets/knowledgenode-chat-live-large.jpg';
+import knowledgeNodeChatLivePlaceholder from '~/assets/knowledgenode-chat-live-placeholder.jpg';
+import knowledgeNodeChatFilter from '~/assets/knowledgenode-chat-filter.jpg';
+import knowledgeNodeChatFilterLarge from '~/assets/knowledgenode-chat-filter-large.jpg';
+import knowledgeNodeChatFilterPlaceholder from '~/assets/knowledgenode-chat-filter-placeholder.jpg';
+import knowledgeNodeReportedContent from '~/assets/knowledgenode-reported-content.jpg';
+import knowledgeNodeReportedContentLarge from '~/assets/knowledgenode-reported-content-large.jpg';
+import knowledgeNodeReportedContentPlaceholder from '~/assets/knowledgenode-reported-content-placeholder.jpg';
+import knowledgeNodeNotifications from '~/assets/knowledgenode-notifications.jpg';
+import knowledgeNodeNotificationsLarge from '~/assets/knowledgenode-notifications-large.jpg';
+import knowledgeNodeNotificationsPlaceholder from '~/assets/knowledgenode-notifications-placeholder.jpg';
+
 import { Carousel } from '~/components/carousel';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';
@@ -266,6 +280,47 @@ export const KnowledgeNode = () => {
               ]}
             />
           </ProjectSectionContent>
+        </ProjectSection>
+
+        {/* Section 7: Real-time Community Chat */}
+        <ProjectSection padding="top" light>
+          <ProjectSectionColumns centered className={styles.columns}>
+            <div className={styles.imagesText}>
+              <ProjectSectionHeading>Always connected</ProjectSectionHeading>
+              <ProjectSectionText>
+                KnowledgeNode features WebSocket-powered real-time chat within every community. Messages are anonymised after 24 hours, keeping discussions focused while protecting student privacy. A built-in profanity filter and an admin moderation panel allow professors to maintain a safe learning environment.
+              </ProjectSectionText>
+            </div>
+            <div className={styles.sidebarCarousel}>
+              <Carousel
+                width={350}
+                height={650}
+                placeholder={knowledgeNodeChatLivePlaceholder}
+                images={[
+                  {
+                    srcSet: `${knowledgeNodeChatLive} 350w, ${knowledgeNodeChatLiveLarge} 700w`,
+                    placeholder: knowledgeNodeChatLivePlaceholder,
+                    alt: 'Real-time community chat between two users',
+                  },
+                  {
+                    srcSet: `${knowledgeNodeChatFilter} 350w, ${knowledgeNodeChatFilterLarge} 700w`,
+                    placeholder: knowledgeNodeChatFilterPlaceholder,
+                    alt: 'Profanity filter blocking an inappropriate message',
+                  },
+                  {
+                    srcSet: `${knowledgeNodeReportedContent} 350w, ${knowledgeNodeReportedContentLarge} 700w`,
+                    placeholder: knowledgeNodeReportedContentPlaceholder,
+                    alt: 'Admin moderation view for reported content',
+                  },
+                  {
+                    srcSet: `${knowledgeNodeNotifications} 350w, ${knowledgeNodeNotificationsLarge} 700w`,
+                    placeholder: knowledgeNodeNotificationsPlaceholder,
+                    alt: 'Real-time notifications drawer with reply alerts',
+                  },
+                ]}
+              />
+            </div>
+          </ProjectSectionColumns>
         </ProjectSection>
       </ProjectContainer>
       <Footer />
