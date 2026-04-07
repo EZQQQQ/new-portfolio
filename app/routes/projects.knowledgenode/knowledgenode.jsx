@@ -60,6 +60,10 @@ import knowledgeNodeOnboarding from '~/assets/knowledgenode-onboarding.jpg';
 import knowledgeNodeOnboardingLarge from '~/assets/knowledgenode-onboarding-large.jpg';
 import knowledgeNodeOnboardingPlaceholder from '~/assets/knowledgenode-onboarding-placeholder.jpg';
 
+// Demo video
+import knowledgeNodeDemo from '~/assets/knowledgenode-demo.mp4';
+import knowledgeNodeDemoPlaceholder from '~/assets/knowledgenode-demo-placeholder.jpg';
+
 // Chat section images
 import knowledgeNodeChatLive from '~/assets/knowledgenode-chat-live.jpg';
 import knowledgeNodeChatLiveLarge from '~/assets/knowledgenode-chat-live-large.jpg';
@@ -321,6 +325,27 @@ export const KnowledgeNode = () => {
               />
             </div>
           </ProjectSectionColumns>
+        </ProjectSection>
+
+        {/* Section 8: Full demo video */}
+        <ProjectSection padding="top">
+          <ProjectSectionContent>
+            <ProjectTextRow>
+              <ProjectSectionHeading>See it all in action</ProjectSectionHeading>
+              <ProjectSectionText>
+                A complete walkthrough of KnowledgeNode — from registration and community creation through to real-time assessment collaboration, Q&amp;A, and chat.
+              </ProjectSectionText>
+            </ProjectTextRow>
+            <ProjectImage
+              src={knowledgeNodeDemo}
+              width={1920}
+              height={1080}
+              placeholder={knowledgeNodeDemoPlaceholder}
+              alt="KnowledgeNode full feature walkthrough video"
+              reveal
+              delay={300}
+            />
+          </ProjectSectionContent>
         </ProjectSection>
       </ProjectContainer>
       <Footer />
