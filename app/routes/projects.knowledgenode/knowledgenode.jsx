@@ -37,8 +37,6 @@ import knowledgeNodeProfilePlaceholder from '~/assets/knowledgenode-profile-plac
 import knowledgeNodeQuestions from '~/assets/knowledgenode-questions.jpg';
 import knowledgeNodeQuestionsPlaceholder from '~/assets/knowledgenode-questions-placeholder.jpg';
 
-import { Carousel } from '~/components/carousel';
-
 // Assessment task modal
 import knowledgeNodeAssessmentTask from '~/assets/knowledgenode-assessment-task.jpg';
 import knowledgeNodeAssessmentTaskLarge from '~/assets/knowledgenode-assessment-task-large.jpg';
@@ -49,6 +47,7 @@ import knowledgeNodeOnboarding from '~/assets/knowledgenode-onboarding.jpg';
 import knowledgeNodeOnboardingLarge from '~/assets/knowledgenode-onboarding-large.jpg';
 import knowledgeNodeOnboardingPlaceholder from '~/assets/knowledgenode-onboarding-placeholder.jpg';
 
+import { Carousel } from '~/components/carousel';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';
 import {
