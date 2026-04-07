@@ -36,6 +36,19 @@ import knowledgeNodeProfilePlaceholder from '~/assets/knowledgenode-profile-plac
 // Questions feature images
 import knowledgeNodeQuestions from '~/assets/knowledgenode-questions.jpg';
 import knowledgeNodeQuestionsPlaceholder from '~/assets/knowledgenode-questions-placeholder.jpg';
+import knowledgeNodeQuestionsLarge from '~/assets/knowledgenode-questions-large.jpg';
+import knowledgeNodeAskQuestion from '~/assets/knowledgenode-ask-question.jpg';
+import knowledgeNodeAskQuestionLarge from '~/assets/knowledgenode-ask-question-large.jpg';
+import knowledgeNodeAskQuestionPlaceholder from '~/assets/knowledgenode-ask-question-placeholder.jpg';
+import knowledgeNodeAnswer from '~/assets/knowledgenode-answer.jpg';
+import knowledgeNodeAnswerLarge from '~/assets/knowledgenode-answer-large.jpg';
+import knowledgeNodeAnswerPlaceholder from '~/assets/knowledgenode-answer-placeholder.jpg';
+import knowledgeNodeSearchPoll from '~/assets/knowledgenode-search-poll.jpg';
+import knowledgeNodeSearchPollLarge from '~/assets/knowledgenode-search-poll-large.jpg';
+import knowledgeNodeSearchPollPlaceholder from '~/assets/knowledgenode-search-poll-placeholder.jpg';
+import knowledgeNodeBookmarks from '~/assets/knowledgenode-bookmarks.jpg';
+import knowledgeNodeBookmarksLarge from '~/assets/knowledgenode-bookmarks-large.jpg';
+import knowledgeNodeBookmarksPlaceholder from '~/assets/knowledgenode-bookmarks-placeholder.jpg';
 
 // Assessment task modal
 import knowledgeNodeAssessmentTask from '~/assets/knowledgenode-assessment-task.jpg';
@@ -220,12 +233,37 @@ export const KnowledgeNode = () => {
                 Our platform empowers educators and learners to drive community engagement by posting questions, launching polls, and uploading helpful PDF resources. This asynchronous communication framework enables users to share insights, seek guidance, and build a valuable repository of knowledge that benefits the entire community.
               </ProjectSectionText>
             </ProjectTextRow>
-            <Image
-              src={knowledgeNodeQuestions}
+            <Carousel
               width={940}
-              height={500}
+              height={560}
               placeholder={knowledgeNodeQuestionsPlaceholder}
-              alt="Question feature on KnowledgeNode"
+              images={[
+                {
+                  srcSet: `${knowledgeNodeQuestions} 940w, ${knowledgeNodeQuestionsLarge} 1880w`,
+                  placeholder: knowledgeNodeQuestionsPlaceholder,
+                  alt: 'Question feed on KnowledgeNode',
+                },
+                {
+                  srcSet: `${knowledgeNodeAskQuestion} 940w, ${knowledgeNodeAskQuestionLarge} 1880w`,
+                  placeholder: knowledgeNodeAskQuestionPlaceholder,
+                  alt: 'Ask a public question form with rich text editor',
+                },
+                {
+                  srcSet: `${knowledgeNodeAnswer} 940w, ${knowledgeNodeAnswerLarge} 1880w`,
+                  placeholder: knowledgeNodeAnswerPlaceholder,
+                  alt: 'Answering a question — split view interface',
+                },
+                {
+                  srcSet: `${knowledgeNodeSearchPoll} 940w, ${knowledgeNodeSearchPollLarge} 1880w`,
+                  placeholder: knowledgeNodeSearchPollPlaceholder,
+                  alt: 'Search results with poll voting',
+                },
+                {
+                  srcSet: `${knowledgeNodeBookmarks} 940w, ${knowledgeNodeBookmarksLarge} 1880w`,
+                  placeholder: knowledgeNodeBookmarksPlaceholder,
+                  alt: 'Bookmarked questions with embedded PDF viewer',
+                },
+              ]}
             />
           </ProjectSectionContent>
         </ProjectSection>
