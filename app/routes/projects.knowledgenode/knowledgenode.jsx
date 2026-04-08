@@ -282,7 +282,7 @@ export const KnowledgeNode = () => {
             </ProjectTextRow>
             <div className={styles.videoWrapper}>
               <iframe
-                src="EMBED_URL_HERE"
+                src="https://player.vimeo.com/video/1181017894"
                 title="KnowledgeNode full feature walkthrough"
                 allow="autoplay; fullscreen; picture-in-picture"
                 allowFullScreen
