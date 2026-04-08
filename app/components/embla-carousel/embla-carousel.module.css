@@ -1,0 +1,79 @@
+.embla {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+  cursor: default;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+
+  & img,
+  & video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.embla__controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.embla__dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.embla__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.embla__dot--selected {
+  background: var(--primary);
+}
+
+.embla__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgb(var(--rgbPrimary) / 0.4);
+  background: var(--background);
+  color: var(--primary);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: var(--primary);
+  }
+
+  & svg {
+    width: 16px;
+    height: 16px;
+  }
+}
