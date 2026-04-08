@@ -37,12 +37,6 @@ import knowledgeNodeProfilePlaceholder from '~/assets/knowledgenode-profile-plac
 import knowledgeNodeQuestions from '~/assets/knowledgenode-questions.jpg';
 import knowledgeNodeQuestionsPlaceholder from '~/assets/knowledgenode-questions-placeholder.jpg';
 import knowledgeNodeQuestionsLarge from '~/assets/knowledgenode-questions-large.jpg';
-import knowledgeNodeAskQuestion from '~/assets/knowledgenode-ask-question.jpg';
-import knowledgeNodeAskQuestionLarge from '~/assets/knowledgenode-ask-question-large.jpg';
-import knowledgeNodeAskQuestionPlaceholder from '~/assets/knowledgenode-ask-question-placeholder.jpg';
-import knowledgeNodeAnswer from '~/assets/knowledgenode-answer.jpg';
-import knowledgeNodeAnswerLarge from '~/assets/knowledgenode-answer-large.jpg';
-import knowledgeNodeAnswerPlaceholder from '~/assets/knowledgenode-answer-placeholder.jpg';
 import knowledgeNodeSearchPoll from '~/assets/knowledgenode-search-poll.jpg';
 import knowledgeNodeSearchPollLarge from '~/assets/knowledgenode-search-poll-large.jpg';
 import knowledgeNodeSearchPollPlaceholder from '~/assets/knowledgenode-search-poll-placeholder.jpg';
@@ -50,35 +44,15 @@ import knowledgeNodeBookmarks from '~/assets/knowledgenode-bookmarks.jpg';
 import knowledgeNodeBookmarksLarge from '~/assets/knowledgenode-bookmarks-large.jpg';
 import knowledgeNodeBookmarksPlaceholder from '~/assets/knowledgenode-bookmarks-placeholder.jpg';
 
-// Assessment task modal
-import knowledgeNodeAssessmentTask from '~/assets/knowledgenode-assessment-task.jpg';
-import knowledgeNodeAssessmentTaskLarge from '~/assets/knowledgenode-assessment-task-large.jpg';
-import knowledgeNodeAssessmentTaskPlaceholder from '~/assets/knowledgenode-assessment-task-placeholder.jpg';
-
-// Onboarding modal
-import knowledgeNodeOnboarding from '~/assets/knowledgenode-onboarding.jpg';
-import knowledgeNodeOnboardingLarge from '~/assets/knowledgenode-onboarding-large.jpg';
-import knowledgeNodeOnboardingPlaceholder from '~/assets/knowledgenode-onboarding-placeholder.jpg';
-
-// Demo video
-import knowledgeNodeDemo from '~/assets/knowledgenode-demo.mp4';
-import knowledgeNodeDemoPlaceholder from '~/assets/knowledgenode-demo-placeholder.jpg';
-
 // Chat section images
 import knowledgeNodeChatLive from '~/assets/knowledgenode-chat-live.jpg';
 import knowledgeNodeChatLiveLarge from '~/assets/knowledgenode-chat-live-large.jpg';
 import knowledgeNodeChatLivePlaceholder from '~/assets/knowledgenode-chat-live-placeholder.jpg';
-import knowledgeNodeChatFilter from '~/assets/knowledgenode-chat-filter.jpg';
-import knowledgeNodeChatFilterLarge from '~/assets/knowledgenode-chat-filter-large.jpg';
-import knowledgeNodeChatFilterPlaceholder from '~/assets/knowledgenode-chat-filter-placeholder.jpg';
-import knowledgeNodeReportedContent from '~/assets/knowledgenode-reported-content.jpg';
-import knowledgeNodeReportedContentLarge from '~/assets/knowledgenode-reported-content-large.jpg';
-import knowledgeNodeReportedContentPlaceholder from '~/assets/knowledgenode-reported-content-placeholder.jpg';
 import knowledgeNodeNotifications from '~/assets/knowledgenode-notifications.jpg';
 import knowledgeNodeNotificationsLarge from '~/assets/knowledgenode-notifications-large.jpg';
 import knowledgeNodeNotificationsPlaceholder from '~/assets/knowledgenode-notifications-placeholder.jpg';
 
-import { Carousel } from '~/components/carousel';
+import { EmblaCarousel } from '~/components/embla-carousel';
 import { Footer } from '~/components/footer';
 import { Image } from '~/components/image';
 import {
@@ -155,33 +129,24 @@ export const KnowledgeNode = () => {
                 My solution enabled seamless, concurrent access to assessments, empowering both educators and learners to effortlessly share valuable insights and update responses instantly.
               </ProjectSectionText>
             </div>
-            <div className={styles.sidebarCarousel}>
-              <Carousel
+            <div className={styles.sidebarImages}>
+              <Image
+                className={styles.sidebarImage}
+                srcSet={`${knowledgeNodeAssessmentProfessor} 350w, ${knowledgeNodeAssessmentProfessorLarge} 700w`}
                 width={350}
                 height={750}
                 placeholder={knowledgeNodeAssessmentProfessorPlaceholder}
-                images={[
-                  {
-                    srcSet: `${knowledgeNodeAssessmentProfessor} 350w, ${knowledgeNodeAssessmentProfessorLarge} 700w`,
-                    placeholder: knowledgeNodeAssessmentProfessorPlaceholder,
-                    alt: 'Professor interface of KnowledgeNode',
-                  },
-                  {
-                    srcSet: `${knowledgeNodeAssessmentStudent} 350w, ${knowledgeNodeAssessmentStudentLarge} 700w`,
-                    placeholder: knowledgeNodeAssessmentStudentPlaceholder,
-                    alt: 'Student interface of KnowledgeNode',
-                  },
-                  {
-                    srcSet: `${knowledgeNodeAssessmentTask} 350w, ${knowledgeNodeAssessmentTaskLarge} 700w`,
-                    placeholder: knowledgeNodeAssessmentTaskPlaceholder,
-                    alt: 'Add Assessment Task modal',
-                  },
-                  {
-                    srcSet: `${knowledgeNodeOnboarding} 350w, ${knowledgeNodeOnboardingLarge} 700w`,
-                    placeholder: knowledgeNodeOnboardingPlaceholder,
-                    alt: 'Professor onboarding features walkthrough',
-                  },
-                ]}
+                alt="Professor interface of KnowledgeNode"
+                sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
+              />
+              <Image
+                className={styles.sidebarImage}
+                srcSet={`${knowledgeNodeAssessmentStudent} 350w, ${knowledgeNodeAssessmentStudentLarge} 700w`}
+                width={350}
+                height={750}
+                placeholder={knowledgeNodeAssessmentStudentPlaceholder}
+                alt="Student interface of KnowledgeNode"
+                sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
               />
             </div>
           </ProjectSectionColumns>
@@ -251,25 +216,13 @@ export const KnowledgeNode = () => {
                 Our platform empowers educators and learners to drive community engagement by posting questions, launching polls, and uploading helpful PDF resources. This asynchronous communication framework enables users to share insights, seek guidance, and build a valuable repository of knowledge that benefits the entire community.
               </ProjectSectionText>
             </ProjectTextRow>
-            <Carousel
-              width={940}
-              height={560}
+            <EmblaCarousel
               placeholder={knowledgeNodeQuestionsPlaceholder}
               images={[
                 {
                   srcSet: `${knowledgeNodeQuestions} 940w, ${knowledgeNodeQuestionsLarge} 1880w`,
                   placeholder: knowledgeNodeQuestionsPlaceholder,
                   alt: 'Question feed on KnowledgeNode',
-                },
-                {
-                  srcSet: `${knowledgeNodeAskQuestion} 940w, ${knowledgeNodeAskQuestionLarge} 1880w`,
-                  placeholder: knowledgeNodeAskQuestionPlaceholder,
-                  alt: 'Ask a public question form with rich text editor',
-                },
-                {
-                  srcSet: `${knowledgeNodeAnswer} 940w, ${knowledgeNodeAnswerLarge} 1880w`,
-                  placeholder: knowledgeNodeAnswerPlaceholder,
-                  alt: 'Answering a question — split view interface',
                 },
                 {
                   srcSet: `${knowledgeNodeSearchPoll} 940w, ${knowledgeNodeSearchPollLarge} 1880w`,
@@ -295,33 +248,24 @@ export const KnowledgeNode = () => {
                 KnowledgeNode features WebSocket-powered real-time chat within every community. Messages are anonymised after 24 hours, keeping discussions focused while protecting student privacy. A built-in profanity filter and an admin moderation panel allow professors to maintain a safe learning environment.
               </ProjectSectionText>
             </div>
-            <div className={styles.sidebarCarousel}>
-              <Carousel
-                width={350}
-                height={650}
+            <div className={styles.sidebarImages}>
+              <Image
+                className={styles.sidebarImage}
+                srcSet={`${knowledgeNodeChatLive} 491w, ${knowledgeNodeChatLiveLarge} 981w`}
+                width={491}
+                height={700}
                 placeholder={knowledgeNodeChatLivePlaceholder}
-                images={[
-                  {
-                    srcSet: `${knowledgeNodeChatLive} 350w, ${knowledgeNodeChatLiveLarge} 700w`,
-                    placeholder: knowledgeNodeChatLivePlaceholder,
-                    alt: 'Real-time community chat between two users',
-                  },
-                  {
-                    srcSet: `${knowledgeNodeChatFilter} 350w, ${knowledgeNodeChatFilterLarge} 700w`,
-                    placeholder: knowledgeNodeChatFilterPlaceholder,
-                    alt: 'Profanity filter blocking an inappropriate message',
-                  },
-                  {
-                    srcSet: `${knowledgeNodeReportedContent} 350w, ${knowledgeNodeReportedContentLarge} 700w`,
-                    placeholder: knowledgeNodeReportedContentPlaceholder,
-                    alt: 'Admin moderation view for reported content',
-                  },
-                  {
-                    srcSet: `${knowledgeNodeNotifications} 350w, ${knowledgeNodeNotificationsLarge} 700w`,
-                    placeholder: knowledgeNodeNotificationsPlaceholder,
-                    alt: 'Real-time notifications drawer with reply alerts',
-                  },
-                ]}
+                alt="Real-time community chat between two users"
+                sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
+              />
+              <Image
+                className={styles.sidebarImage}
+                srcSet={`${knowledgeNodeNotifications} 550w, ${knowledgeNodeNotificationsLarge} 1099w`}
+                width={550}
+                height={700}
+                placeholder={knowledgeNodeNotificationsPlaceholder}
+                alt="Real-time notifications drawer with reply alerts"
+                sizes={`(max-width: ${media.mobile}px) 200px, 343px`}
               />
             </div>
           </ProjectSectionColumns>
@@ -336,15 +280,14 @@ export const KnowledgeNode = () => {
                 A complete walkthrough of KnowledgeNode — from registration and community creation through to real-time assessment collaboration, Q&amp;A, and chat.
               </ProjectSectionText>
             </ProjectTextRow>
-            <ProjectImage
-              src={knowledgeNodeDemo}
-              width={1920}
-              height={1080}
-              placeholder={knowledgeNodeDemoPlaceholder}
-              alt="KnowledgeNode full feature walkthrough video"
-              reveal
-              delay={300}
-            />
+            <div className={styles.videoWrapper}>
+              <iframe
+                src="EMBED_URL_HERE"
+                title="KnowledgeNode full feature walkthrough"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
           </ProjectSectionContent>
         </ProjectSection>
       </ProjectContainer>
