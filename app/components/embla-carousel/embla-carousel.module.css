@@ -55,6 +55,11 @@
   background: var(--primary);
 }
 
+.embla__button--prev,
+.embla__button--next {
+  /* directional variants — layout handled by .embla__button base class */
+}
+
 .embla__button {
   display: flex;
   align-items: center;
